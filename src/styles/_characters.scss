@@ -1,0 +1,316 @@
+@use 'variaveis';
+
+.characters {        
+    padding: 4vw 5.6vw; 
+    position: relative; 
+    overflow: hidden; // para o fundo não vazar
+    isolation: isolate;
+    border-bottom: 1px solid #222;
+
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        
+        background-image: url('../images/mural-alien_hrg.jpg'); 
+        background-size: cover;
+        background-position: center;
+        
+        // CONTROLE DA OPACIDADE DA IMAGEM
+        opacity: 0.08; // (0.1 = 10% visível)
+        
+        z-index: -1; 
+    }
+
+    // Título da Seção ("PERSONAGENS")
+    // &__title-container {
+    //     text-align: center;
+    //     margin-bottom: 40px;
+
+    //     h3 {
+    //         font-family: variaveis.$font-destaque;
+    //         font-size: 32px;
+    //         font-weight: 100;
+    //         color: rgba(160, 170, 60, 0.9); 
+    //         text-transform: uppercase;
+    //         letter-spacing: 4px;
+    //     }
+    // }
+        &__title-container {
+        text-align: center;
+        margin-bottom: 2%; 
+        font-family: variaveis.$font-destaque;
+
+            h3{
+                border-radius: 7px;
+                padding-top: 0.5%;
+                padding-bottom: 0.5%;
+                font-size: 37px;
+                font-weight: 100;
+                border-top: 1px solid rgba(159, 171, 51, 0.8);
+                border-bottom: 1px solid rgba(159, 171, 51, 0.8);
+                box-shadow: 0 0 8px 1px rgba(142, 152, 55, 0.3);
+                background-color: rgba(0, 0, 0, 0.35);
+            }
+        }
+    
+
+    // Abas de navegação dos personagens
+    &__tabs {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap; 
+        gap: 12px;
+        margin-bottom: 60px;
+
+        &__button {
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: 1px solid rgb(161, 170, 60);
+            border-radius: 10px;
+            padding: 8px 20px;
+            font-size: 14px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: rgba(89, 96, 19, 0.3);
+                // border-color: rgba(160, 170, 60, 0.8);
+            }
+
+            &--is-active {
+                background-color: rgb(88, 75, 0);
+                color: #ffffff;
+                // font-weight: bold;
+                // border-color: rgba(160, 170, 60, 1);
+            }
+        }
+    }
+    
+    // Container do conteúdo das abas
+    &__content {
+        max-width: 1100px; // Largura máxima para o conteúdo
+        margin: 0 auto;
+    }
+}
+
+// Layout do Perfil do Personagem 
+// .character-profile {
+//     display: none; 
+//     grid-template-columns: 3fr 2fr; // Biografia ocupa 60%, Ficha 40%
+//     gap: 5vw;
+//     align-items: flex-start;
+//     animation: fadeIn 0.5s ease-in-out;
+
+//     &--is-active {
+//         display: grid; // O perfil é mostrado como grid
+//     }
+
+.character-profile {
+    display: none; 
+    animation: fadeIn 0.5s ease-in-out;
+
+    &--is-active {
+        display: block; 
+    }
+
+    // Garante que o container se expanda corretamente para conter os elementos com float.
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    &__bio {
+        h3 {
+            font-family: variaveis.$font-destaque;
+            color: variaveis.$corTextoPrincipal;
+            font-size: 32px;
+            font-weight: 100;
+            margin-bottom: 3%;
+            margin-top: 0.5%;
+            text-transform: uppercase;
+        }
+
+        p {
+            margin-bottom: 1em;
+            // line-height: 1.7;
+            text-align: justify;
+        }
+    }
+
+    &__infocard {
+        float: right;            
+        width: 38%;              
+        margin-left: 5vw;        
+        margin-bottom: 4.4%;     
+
+        background-color: #0c0c0c;
+        border: 1px solid #222;
+        border-radius: 4px;
+        padding: 24px;
+        
+
+        img {
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .infocard__details {
+            font-size: 15px;
+
+            li {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 0;
+                border-bottom: 1px solid #222;
+                text-align: right;
+                color: variaveis.$corTextoSecundario;
+
+                &:last-child {
+                    border: none;
+                }
+
+                span { // Rótulos como "Nascimento", "Rank" 
+                    text-align: left;
+                    font-weight: bold;
+                    padding-right: 10%;
+                    // color: variaveis.$corTextoSecundario;
+                    color: rgb(220, 162, 44);
+                    // margin-right: 16px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr; 
+        gap: 40px;
+        
+        &__infocard {
+            grid-row: 1; // Coloca a ficha de informações PRIMEIRO no mobile
+        }
+    }
+}
+
+// Animação das abas
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+// @use 'variaveis';
+
+// .shows {        
+//     // border: solid 2px;
+//     padding: 2vw 5.6vw;
+//     min-height: 50vw;
+
+//     &__list {
+//         margin-top: 44px;
+//         display: none;
+//         grid-template-columns: 1fr 1fr 1fr;
+//         gap: 24px;
+
+//         @media (max-width: 768px) {
+//             grid-template-columns: 1fr 1fr;
+//         }
+
+//         &--is-active {
+//             display: grid;
+//         }
+
+//         &__item {
+//             img {
+//                 max-width: 100%;
+//                 border-radius: 4px;
+//             }
+//         }
+//     }
+
+//     &__div--h3 {
+//         // display: inline;
+//         text-align: center;
+//         margin-bottom: 5%;
+//         font-family: variaveis.$font-destaque;
+
+//         // border: 1px solid;
+
+//         h3{
+//             padding-top: 0.5%;
+//             padding-bottom: 0.5%;
+//             font-size: 34px;
+//             font-weight: 100;
+//             border-top: 1px solid rgba(159, 171, 51, 0.8);
+//             border-bottom: 1px solid rgba(159, 171, 51, 0.8);
+//             box-shadow: 0 0 8px 1px rgba(142, 152, 55, 0.3);
+//         }
+
+//         }
+    
+    
+
+//     &__div--separa {
+//         border: 1px solid rgba(51, 83, 171, 0.6);
+//     }
+
+//     &__tabs {
+//         display: flex;
+//         justify-content: center;
+//         margin-left: 7%;
+//         margin-right: 7%;
+//         max-width: 86%;
+//         // border: solid 2px;
+
+//         @media (max-width: 768px) {
+//             white-space: nowrap;
+//             overflow-x: scroll;
+//             padding-left: 20px;
+//         }
+
+//         &__button {
+//             color: variaveis.$corTextoPrincipal;
+//             font-size: 16px;
+//             border: none;
+//             // padding-bottom: 2px;
+//             background: none;
+//             text-transform: uppercase;
+//             margin: 0 0.7%;
+//             cursor: pointer;
+//             border-bottom: 5px solid transparent;
+//             padding-top: 0.7%;
+//             padding-bottom: 0.7%;
+//             width: 100%;
+//             border-radius: 1px;
+
+//             &:hover{
+//                 transition: ease-in 0.3s;
+//                 border-bottom: 2px solid rgb(159, 171, 51);
+//             }
+
+//             &--is-active {
+//                 transition: none;
+//                 box-shadow: 0 0 8px 1px rgba(142, 152, 55, 0.785);
+//                 border-top: 2px solid rgb(159, 171, 51);
+//                 border-bottom: 2px solid rgb(159, 171, 51);
+//             }
+
+//             @media (max-width: 768px) {
+//                 font-size: 16px;
+//             }
+//         }
+//     }
+// }

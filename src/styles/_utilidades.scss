@@ -1,0 +1,100 @@
+@use 'sass:color';
+@use 'variaveis';
+
+@mixin text($fontSize: 16px) {
+    font-size: $fontSize;
+    line-height: $fontSize + 10px;
+    color: variaveis.$corTextoPrincipal;
+}
+
+@mixin title($fontSize: 40px) {
+    @include text($fontSize);
+    color: variaveis.$corTextoSecundario;
+}
+
+.text--big {
+    @include text(18px);
+    @media (max-width: 768px) { @include text(15px); }
+}
+
+.text {
+    @include text;
+    @media (max-width: 768px) { @include text(14px); }
+}
+
+.text--small {
+    @include text(12px);
+    @media (max-width: 768px) { @include text(11px); }
+}
+
+.link-text {
+    @include text(18px);
+    color: variaveis.$corTextoSecundario;
+    text-decoration: underline;
+}
+
+.title--big {
+    @include title(44px);
+    @media (max-width: 768px) { @include title(26px); }
+}
+
+.title {
+    @include title;
+    @media (max-width: 768px) { @include title(24px); }
+}
+
+.title--small {
+    @include title(28px);
+    @media (max-width: 768px) { @include title(22px); }
+} 
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    font-size: 17px;
+    color: #fff;
+    // background-color: variaveis.$corDeFundoBotaoPrimario;
+    // text-transform: uppercase;
+    border-radius: 7px;
+    text-decoration: none;
+    padding: 8px 24px;
+    letter-spacing: 1px;
+    width: auto; // Para não ocupar 100% da largura sempre
+    background-color: rgba(0, 0, 0, 0.8);
+
+    // &:hover {
+    //     background-color: lighten(variaveis.$corDeFundoBotaoPrimario, 5%);
+    // }
+    // &:hover {
+    //         // background-color: color.adjust(variaveis.$corDeFundoBotaoPrimario, $lightness: 5%);
+    //         background-color: white;
+    //     }
+
+    // &--secondary {
+    //     background-color: variaveis.$corDeFundoBotaoSecundario;
+    //     border-color: variaveis.$corDeFundoBotaoSecundario;
+
+    //     // &:hover {
+    //     //     background-color: lighten(variaveis.$corDeFundoBotaoSecundario, 5%);
+    //     // }
+    //     &:hover {
+    //         background-color: color.adjust(variaveis.$corDeFundoBotaoSecundario, $lightness: 5%);
+    //     }
+    // }
+
+    &--dark {
+        border-top: 1px solid rgba(255, 255, 255, 0.648);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.648);
+
+        &:hover {
+            transition: ease-in 0.3s;
+            box-shadow: 0 0 8px 1px rgba(142, 152, 55, 0.785);
+            border-top: 2px solid rgb(159, 171, 51);
+            border-bottom: 2px solid rgb(159, 171, 51);
+            // background-color: white;
+            // color: black;
+        }
+    }
+}

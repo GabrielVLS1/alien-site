@@ -1,0 +1,25 @@
+{
+  "name": "site-alien",
+  "version": "1.0.0",
+  "description": "Um site com a temática do filme Alien",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp watch",
+    "build": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "alien",
+    "sass",
+    "gulp"
+  ],
+  "author": "Seu Nome Aqui",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.89.2"
+  }
+}
