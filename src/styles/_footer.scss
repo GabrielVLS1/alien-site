@@ -16,6 +16,29 @@
         margin: 0 auto 10px;
     }
 
+    &__git{
+        margin-bottom: 2%;
+
+        a{
+            font-family: variaveis.$font-destaque;
+            font-size: 25px;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            background-color: rgb(0, 0, 0);
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid  rgb(220, 162, 44);
+
+            &:hover{
+                font-weight: bold;
+                color: rgb(0, 0, 0);
+                background-color: rgb(255, 255, 255);
+                transition: 0.3s ease-in;
+                box-shadow: 0 0 8px 1px rgba(220, 161, 44, 0.76);
+            }
+        }
+    }
+
     &__links {
         margin-bottom: 16px;
         display: flex;
@@ -37,6 +60,10 @@
             }
         }
     }
+
+    // .footer__git{
+    //     color: blue;
+    // }
 
     p {
         margin-bottom: 16px;
